@@ -5,18 +5,18 @@ FROM oracle/graalvm-ce:19.0.0 AS build-aot
 ADD mvnw app/
 ADD .mvn app/.mvn/
 
-# Add pom
+# Add pom and pre-download dependencies
 ADD pom.xml app/
-
-# Add sources
-ADD src app/src/
-
 WORKDIR /app
-# Build (java side)
+RUN ./mvnw verify clean --fail-never
 
+# main build
+WORKDIR /
+ADD src app/src/
+WORKDIR /app
 RUN ./mvnw package
-# Create new image from debian-slim (20Mb)
 
+# Create new image from debian-slim (20Mb)
 FROM debian:stable-slim
 
 COPY --from=build-aot /app/target/vertx-native /vertx-native
