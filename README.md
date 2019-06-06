@@ -10,15 +10,15 @@
 
 or
 
-`docker build -t vertxnative .`
+`docker build -t vertx-native .`
 
 ## Run
 
-`./target/vertxnative`
+`./target/vertx-native`
 
 or
 
-`docker run --rm -it --net=host vertxnative`
+`docker run --rm -it --net=host vertx-native`
 
 ## How this project was made
 
