@@ -1,0 +1,20 @@
+# build files
+target/
+build/
+lib_managed
+
+# runtime files
+node_modules
+.vertx
+
+# maven wrapper
+.mvn/
+
+# ide
+.classpath
+.project
+.idea/
+.vscode/
+*.iml
+
+
